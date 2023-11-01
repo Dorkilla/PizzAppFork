@@ -244,6 +244,9 @@
               <SpinnerModel initial="1" maximum="5" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="numDbStateChanged"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -330,10 +333,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Megrendelem"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRendelMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRendelActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblOsszesito">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#xd6;sszest&#x151;:"/>
+        <Property name="text" type="java.lang.String" value="&#xd6;sszes&#xed;t&#x151;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblKep">
