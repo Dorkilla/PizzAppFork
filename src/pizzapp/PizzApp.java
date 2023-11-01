@@ -176,11 +176,6 @@ public class PizzApp extends javax.swing.JFrame {
                 chbSajtItemStateChanged(evt);
             }
         });
-        chbSajt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chbSajtActionPerformed(evt);
-            }
-        });
 
         chbHagyma.setText("hagyma");
         chbHagyma.addItemListener(new java.awt.event.ItemListener() {
@@ -341,8 +336,8 @@ public class PizzApp extends javax.swing.JFrame {
 
     private void chbSajtItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbSajtItemStateChanged
         if(chbSajt.isSelected()==true){
-            extra1 = 200;
-            feltet1="Sajt";
+            extra1 += 200;
+            feltet1="sajt, ";
     }
         else{
             extra1 = 0;
@@ -351,14 +346,10 @@ public class PizzApp extends javax.swing.JFrame {
         SzamolasKiiras();
     }//GEN-LAST:event_chbSajtItemStateChanged
 
-    private void chbSajtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbSajtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chbSajtActionPerformed
-
     private void chbHagymaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbHagymaItemStateChanged
         if(chbHagyma.isSelected()==true){
-            extra2 = 200;
-            feltet2="Hagyma";
+            extra2 += 200;
+            feltet2="hagyma, ";
         }
         else{
             extra2 = 0;
@@ -369,8 +360,8 @@ public class PizzApp extends javax.swing.JFrame {
 
     private void chbAnanaszItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbAnanaszItemStateChanged
         if(chbAnanasz.isSelected()==true){
-            extra3 = 200;
-            feltet3="Ananasz";
+            extra3 += 200;
+            feltet3="ananász, ";
         }
         else{
             extra3 = 0;
@@ -385,8 +376,7 @@ public class PizzApp extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRendelActionPerformed
 
     private void numDbStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_numDbStateChanged
-        int dbSzam = numDb.getModel().getValue().hashCode();
-       String darab;
+      int dbSzam = numDb.getModel().getValue().hashCode();
         if (dbSzam == 1){
             db=1;
             darab = "1";
@@ -408,7 +398,12 @@ public class PizzApp extends javax.swing.JFrame {
     }//GEN-LAST:event_numDbStateChanged
 
     private void btnRendelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRendelMouseClicked
-   
+    osszegKiirasa();
+    }
+       private void osszegzKiirasa(){
+        osszegzes = fajta +System.lineSeparator()+ meret +System.lineSeparator()+ darab +System.lineSeparator()+("Feltétek: ")+feltetek +System.lineSeparator()+("Végösszeg: ")+vegsoAr+("ft");
+        feltetek = feltet1 + feltet2 + feltet3;
+        txaOsszesito.setText(osszegzes);
     }//GEN-LAST:event_btnRendelMouseClicked
      private void SzamolasKiiras() {
         vegsoAr = pizzaAlapAr * meretSzorzo + extrak;
@@ -470,5 +465,8 @@ public class PizzApp extends javax.swing.JFrame {
     private javax.swing.JTextArea txaOsszesito;
     // End of variables declaration//GEN-END:variables
 
-   
+    private void osszegKiirasa() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+ 
 }
