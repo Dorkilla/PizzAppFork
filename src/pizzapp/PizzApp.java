@@ -7,6 +7,9 @@ public class PizzApp extends javax.swing.JFrame {
     int extrak;
     double vegsoAr;
     double meret;
+    private int extra1;
+    private int extra2;
+    private int extra3;
     
     public PizzApp() {
         initComponents();
@@ -15,9 +18,9 @@ public class PizzApp extends javax.swing.JFrame {
          
        meret = 1; //32 cm
         
-        int extra1 = 0;
-        int extra2 = 0;
-        int extra3 = 0;
+        int extra1 = 200;
+        int extra2 = 200;
+        int extra3 = 200;
         extrak = extra1 + extra2 + extra3;
          
         db = 1;
@@ -150,10 +153,30 @@ public class PizzApp extends javax.swing.JFrame {
         pnlExtrak.setBorder(javax.swing.BorderFactory.createTitledBorder("Extrák"));
 
         chbSajt.setText("sajt");
+        chbSajt.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbSajtItemStateChanged(evt);
+            }
+        });
+        chbSajt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chbSajtActionPerformed(evt);
+            }
+        });
 
         chbHagyma.setText("hagyma");
+        chbHagyma.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbHagymaItemStateChanged(evt);
+            }
+        });
 
         chbAnanasz.setText("ananász");
+        chbAnanasz.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbAnanaszItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlExtrakLayout = new javax.swing.GroupLayout(pnlExtrak);
         pnlExtrak.setLayout(pnlExtrakLayout);
@@ -294,6 +317,37 @@ public class PizzApp extends javax.swing.JFrame {
         
         lblAr.setText(vegsoAr + "");
     }//GEN-LAST:event_rdbMeret32ItemStateChanged
+
+    private void chbSajtItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbSajtItemStateChanged
+        if(chbSajt.isSelected()==true){
+            extra1 = 200;
+    }
+        else{
+            extra1 = 0;
+        }
+    }//GEN-LAST:event_chbSajtItemStateChanged
+
+    private void chbSajtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbSajtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chbSajtActionPerformed
+
+    private void chbHagymaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbHagymaItemStateChanged
+        if(chbHagyma.isSelected()==true){
+            extra2 = 200;
+        }
+        else{
+            extra2 = 0;
+        }
+    }//GEN-LAST:event_chbHagymaItemStateChanged
+
+    private void chbAnanaszItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbAnanaszItemStateChanged
+        if(chbAnanasz.isSelected()==true){
+            extra3 = 200;
+        }
+        else{
+            extra3 = 0;
+        }
+    }//GEN-LAST:event_chbAnanaszItemStateChanged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
