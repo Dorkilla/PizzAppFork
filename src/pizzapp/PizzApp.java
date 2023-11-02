@@ -21,6 +21,7 @@ public class PizzApp extends javax.swing.JFrame {
     String feltet3;
     String feltetek;
     private int dbSzam;
+    private String osszesites;
     
     
     
@@ -48,6 +49,7 @@ public class PizzApp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         lblValaszthato = new javax.swing.JLabel();
         cmdValaszthatoPizzak = new javax.swing.JComboBox<>();
         pnlMeret = new javax.swing.JPanel();
@@ -86,6 +88,7 @@ public class PizzApp extends javax.swing.JFrame {
 
         pnlMeret.setBorder(javax.swing.BorderFactory.createTitledBorder("Méret"));
 
+        buttonGroup1.add(rdbMeret25);
         rdbMeret25.setText("25 cm");
         rdbMeret25.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -93,6 +96,7 @@ public class PizzApp extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(rdbMeret32);
         rdbMeret32.setSelected(true);
         rdbMeret32.setText("32 cm");
         rdbMeret32.addItemListener(new java.awt.event.ItemListener() {
@@ -336,7 +340,7 @@ public class PizzApp extends javax.swing.JFrame {
 
     private void chbSajtItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbSajtItemStateChanged
         if(chbSajt.isSelected()==true){
-            extra1 += 200;
+            extra1 = 200;
             feltet1="sajt, ";
     }
         else{
@@ -348,7 +352,7 @@ public class PizzApp extends javax.swing.JFrame {
 
     private void chbHagymaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbHagymaItemStateChanged
         if(chbHagyma.isSelected()==true){
-            extra2 += 200;
+            extra2 = 200;
             feltet2="hagyma, ";
         }
         else{
@@ -360,7 +364,7 @@ public class PizzApp extends javax.swing.JFrame {
 
     private void chbAnanaszItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbAnanaszItemStateChanged
         if(chbAnanasz.isSelected()==true){
-            extra3 += 200;
+            extra3 = 200;
             feltet3="ananász, ";
         }
         else{
@@ -371,28 +375,36 @@ public class PizzApp extends javax.swing.JFrame {
     }//GEN-LAST:event_chbAnanaszItemStateChanged
 
     private void btnRendelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRendelActionPerformed
-        String jOptSzoveg = "Köszönjük a rendelését! " + vegsoAr + " Ft lesz.";
+        String jOptSzoveg = "Rendelését leadtuk! " + vegsoAr + " Ft lesz.";
         JOptionPane.showMessageDialog(rootPane, jOptSzoveg);
     }//GEN-LAST:event_btnRendelActionPerformed
 
     private void numDbStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_numDbStateChanged
       int dbSzam = numDb.getModel().getValue().hashCode();
-        if (dbSzam == 1){
-            db=1;
-            darab = "1";
-        }else if (dbSzam == 2){
-            db=2;
-            darab = "2";
-        }else if (dbSzam == 3){
-            db=3;
-            darab = "3";
-        }else if (dbSzam == 4){
-            db=4;
-             darab = "4";
-        }else if (dbSzam == 5){
-            db=5;
-             darab = "5";
-        }
+       switch (dbSzam) {
+           case 1:
+               db=1;
+               darab = "1";
+               break;
+           case 2:
+               db=2;
+               darab = "2";
+               break;
+           case 3:
+               db=3;
+               darab = "3";
+               break;
+           case 4:
+               db=4;
+               darab = "4";
+               break;
+           case 5:
+               db=5;
+               darab = "5";
+               break;
+           default:
+               break;
+       }
         SzamolasKiiras();
         darab = "Darabszám: "+(Integer.toString(dbSzam));
     }//GEN-LAST:event_numDbStateChanged
@@ -400,7 +412,7 @@ public class PizzApp extends javax.swing.JFrame {
     private void btnRendelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRendelMouseClicked
     osszegKiirasa();
     }
-       private void osszegzKiirasa(){
+       private void osszegKiirasa(){
         osszegzes = fajta +System.lineSeparator()+ meret +System.lineSeparator()+ darab +System.lineSeparator()+("Feltétek: ")+feltetek +System.lineSeparator()+("Végösszeg: ")+vegsoAr+("ft");
         feltetek = feltet1 + feltet2 + feltet3;
         txaOsszesito.setText(osszegzes);
@@ -410,7 +422,9 @@ public class PizzApp extends javax.swing.JFrame {
         vegsoAr *= db;  //vegsoAr = vegsoAr * db;
         extrak = extra1 + extra2 + extra3;
         lblAr.setText(Double.toString(vegsoAr));
+        
                 }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -445,6 +459,7 @@ public class PizzApp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRendel;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chbAnanasz;
     private javax.swing.JCheckBox chbHagyma;
     private javax.swing.JCheckBox chbSajt;
@@ -465,8 +480,4 @@ public class PizzApp extends javax.swing.JFrame {
     private javax.swing.JTextArea txaOsszesito;
     // End of variables declaration//GEN-END:variables
 
-    private void osszegKiirasa() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
- 
 }
